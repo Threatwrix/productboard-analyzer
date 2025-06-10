@@ -53,7 +53,7 @@ program
       if (options.quick) {
         reporter.printQuickStats(analysis);
       } else {
-        reporter.generateReport(analysis);
+        await reporter.generateReport(analysis);
       }
 
     } catch (error) {
@@ -83,7 +83,7 @@ program
       const features = await fetcher.fetchFeatures();
       
       const analysis = analyzer.analyzeData({ features });
-      reporter.generateReport(analysis);
+      await reporter.generateReport(analysis);
 
     } catch (error) {
       console.error(chalk.red('❌ Error fetching features:'), error.message);
@@ -112,7 +112,7 @@ program
       const notes = await fetcher.fetchNotes();
       
       const analysis = analyzer.analyzeData({ notes });
-      reporter.generateReport(analysis);
+      await reporter.generateReport(analysis);
 
     } catch (error) {
       console.error(chalk.red('❌ Error fetching notes:'), error.message);
